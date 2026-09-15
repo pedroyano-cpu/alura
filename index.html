@@ -1,78 +1,665 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Seleção Japonesa</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SportNews - Notícias do Mundo do Esporte</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            margin: 40px;
-            background-color: #f2f2f2;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+            background-attachment: fixed;
+            color: #e6edf3;
+            min-height: 100vh;
+            line-height: 1.6;
         }
 
+        /* Header */
         header {
-            background-color: #910b0b;
-            color: white;
+            background: rgba(15, 32, 39, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 3px solid #00ff88;
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0, 255, 136, 0.2);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 28px;
+            font-weight: 800;
+            color: #fff;
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: #00ff88;
+            text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+        }
+
+        .logo-icon {
+            font-size: 36px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        .nav-menu a {
+            color: #e6edf3;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-menu a:hover {
+            background: rgba(0, 255, 136, 0.15);
+            color: #00ff88;
+            transform: translateY(-2px);
+        }
+
+        /* Hero */
+        .hero {
             text-align: center;
-            padding: 30px;
+            padding: 50px 20px 30px;
         }
 
-        main {
-            width: 80%;
-            margin: auto;
-            background-color: white;
+        .hero h1 {
+            font-size: 46px;
+            font-weight: 800;
+            background: linear-gradient(90deg, #00ff88, #00d4ff, #ff00c8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 12px;
+            animation: fadeIn 1s ease;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #9fb3c8;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* News Grid */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 28px;
+            padding: 40px 0;
+        }
+
+        .news-card {
+            background: rgba(22, 27, 34, 0.85);
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.4s;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .news-card:hover {
+            transform: translateY(-8px);
+            border-color: #00ff88;
+            box-shadow: 0 12px 40px rgba(0, 255, 136, 0.35);
+        }
+
+        .news-image {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+            background: #0f2027;
+        }
+
+        .news-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .news-card:hover .news-image img {
+            transform: scale(1.1);
+        }
+
+        .news-category {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: #00ff88;
+            color: #0f2027;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .news-content {
             padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
         }
 
-        article {
-            margin-top: 30px;
+        .news-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 10px;
+            line-height: 1.3;
         }
 
-        h2 {
-            color: #0b3d91;
+        .news-description {
+            font-size: 14px;
+            color: #9fb3c8;
+            margin-bottom: 16px;
+            flex: 1;
         }
 
-        button {
-            margin-right: 5px;
+        .news-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            color: #7d8590;
+            margin-bottom: 16px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid rgba(0, 255, 136, 0.15);
+        }
+
+        /* Like/Deslike Buttons */
+        .reaction-bar {
+            display: flex;
+            gap: 12px;
+            margin-top: auto;
+        }
+
+        .reaction-btn {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px 16px;
+            border-radius: 10px;
+            border: 2px solid transparent;
+            background: rgba(48, 54, 61, 0.6);
+            color: #e6edf3;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: inherit;
+        }
+
+        .reaction-btn .count {
+            font-weight: 800;
+            min-width: 20px;
+            text-align: center;
+        }
+
+        .like-btn:hover {
+            background: rgba(0, 255, 136, 0.15);
+            border-color: #00ff88;
+            color: #00ff88;
+            transform: translateY(-2px);
+        }
+
+        .like-btn.active {
+            background: linear-gradient(135deg, #00ff88, #00d4ff);
+            color: #0f2027;
+            border-color: #00ff88;
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.6);
+            animation: pulseGreen 0.5s ease;
+        }
+
+        .dislike-btn:hover {
+            background: rgba(255, 59, 92, 0.15);
+            border-color: #ff3b5c;
+            color: #ff3b5c;
+            transform: translateY(-2px);
+        }
+
+        .dislike-btn.active {
+            background: linear-gradient(135deg, #ff3b5c, #ff7b00);
+            color: #fff;
+            border-color: #ff3b5c;
+            box-shadow: 0 0 20px rgba(255, 59, 92, 0.6);
+            animation: pulseRed 0.5s ease;
+        }
+
+        @keyframes pulseGreen {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.08); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes pulseRed {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.08); }
+            100% { transform: scale(1); }
+        }
+
+        /* Section title */
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin: 40px 0 10px;
+        }
+
+        .section-header h2 {
+            font-size: 28px;
+            font-weight: 800;
+            color: #fff;
+        }
+
+        .section-header .line {
+            flex: 1;
+            height: 3px;
+            background: linear-gradient(90deg, #00ff88, transparent);
+            border-radius: 3px;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(15, 32, 39, 0.9);
+            border-top: 2px solid #00ff88;
+            padding: 30px 0;
+            text-align: center;
+            margin-top: 50px;
+            color: #7d8590;
+            font-size: 14px;
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+
+        footer strong {
+            color: #00ff88;
+        }
+
+        /* Toast notification */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: linear-gradient(135deg, #00ff88, #00d4ff);
+            color: #0f2027;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: 700;
+            box-shadow: 0 8px 30px rgba(0, 255, 136, 0.5);
+            opacity: 0;
+            transition: all 0.4s;
+            z-index: 1000;
+            pointer-events: none;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .header-content {
+                justify-content: center;
+                text-align: center;
+            }
+
+            .nav-menu {
+                justify-content: center;
+                gap: 10px;
+            }
+
+            .nav-menu a {
+                font-size: 13px;
+                padding: 6px 12px;
+            }
+
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
+
+    <!-- Header -->
     <header>
-        <h1>Seleção Japonesa</h1>
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">
+                    <span class="logo-icon">⚽</span>
+                    Sport<span>News</span>
+                </a>
+                <ul class="nav-menu">
+                    <li><a href="#">🏠 Início</a></li>
+                    <li><a href="#">⚽ Futebol</a></li>
+                    <li><a href="#">🏀 Basquete</a></li>
+                    <li><a href="#">🎾 Tênis</a></li>
+                    <li><a href="#">🏎️ F1</a></li>
+                    <li><a href="#">🥊 MMA</a></li>
+                </ul>
+            </div>
+        </div>
     </header>
-    <main>
-        <article>
-            <h2>Sobre a seleção</h2>
-            <p>
-                A Seleção Japonesa de Futebol representa o Japão
-                nas principais competições internacionais.
-                A equipe é conhecida pelo apelido de Samurais Azuis.
-            </p>
-        </article>
-        <article>
-            <h2>Curiosidades sobre o Japão</h2>
-            <p>
-                A seleção japonesa se tornou uma das principais
-                equipes de futebol da Ásia.
-            </p>
-            <ul>
-                <li>O uniforme principal da seleção é azul.</li>
-                <li>A equipe é conhecida como Samurai Blue.</li>
-                <li>O Japão participa de competições internacionais importantes.</li>
-                <li>A seleção é conhecida pela velocidade e organização.</li>
-                <li>O futebol é um esporte muito popular no Japão.</li>
-            </ul>
-        </article>
-        <article>
-            <h2>Futebol japonês</h2>
-            <p>
-                O futebol japonês cresceu bastante ao longo dos anos.
-                Muitos jogadores japoneses também atuam em clubes
-                importantes de outros países.
-            </p>
-        </article>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <h1>⚡ As Últimas do Mundo do Esporte</h1>
+            <p>Fique por dentro das principais notícias, resultados e acontecimentos do esporte mundial em tempo real.</p>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <main class="container">
+        <div class="section-header">
+            <h2>🔥 Últimas Notícias</h2>
+            <div class="line"></div>
+        </div>
+
+        <div class="news-grid" id="newsGrid">
+
+            <!-- Notícia 1 - Futebol -->
+            <article class="news-card" data-id="1">
+                <div class="news-image">
+                    <img src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif" alt="Futebol gol">
+                    <span class="news-category">Futebol</span>
+                </div>
+                <div class="news-content">
+                    <h3 class="news-title">Final da Champions League bate recorde de audiência</h3>
+                    <p class="news-description">A grande final emocionante atraiu mais de 500 milhões de espectadores ao redor do mundo, com gol nos acréscimos que parou o planeta.</p>
+                    <div class="news-meta">
+                        <span>📅 Hoje, 14:32</span>
+                        <span>👁️ 12.4k views</span>
+                    </div>
+                    <div class="reaction-bar">
+                        <button class="reaction-btn like-btn" onclick="reaction(this, 'like')">
+                            👍 <span class="count">0</span> Curti
+                        </button>
+                        <button class="reaction-btn dislike-btn" onclick="reaction(this, 'dislike')">
+                            👎 <span class="count">0</span> Não Curti
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Notícia 2 - Basquete -->
+            <article class="news-card" data-id="2">
+                <div class="news-image">
+                    <img src="https://media.giphy.com/media/3o7TKu8Bv6y9FQWnKM/giphy.gif" alt="Basquete enterrada">
+                    <span class="news-category">Basquete</span>
+                </div>
+                <div class="news-content">
+                    <h3 class="news-title">Cestinha histórica marca 60 pontos na NBA</h3>
+                    <p class="news-description">Em noite inspirada, astro da NBA faz história com 60 pontos em partida emocionante e leva time à vitória nos segundos finais.</p>
+                    <div class="news-meta">
+                        <span>📅 Hoje, 12:15</span>
+                        <span>👁️ 8.9k views</span>
+                    </div>
+                    <div class="reaction-bar">
+                        <button class="reaction-btn like-btn" onclick="reaction(this, 'like')">
+                            👍 <span class="count">0</span> Curti
+                        </button>
+                        <button class="reaction-btn dislike-btn" onclick="reaction(this, 'dislike')">
+                            👎 <span class="count">0</span> Não Curti
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Notícia 3 - F1 -->
+            <article class="news-card" data-id="3">
+                <div class="news-image">
+                    <img src="https://media.giphy.com/media/xT0xeuOy2Fcl9vDGiA/giphy.gif" alt="F1 corrida">
+                    <span class="news-category">Fórmula 1</span>
+                </div>
+                <div class="news-content">
+                    <h3 class="news-title">GP de Mônaco tem ultrapassagem espetacular na última volta</h3>
+                    <p class="news-description">Piloto surpreende com manobra ousada na curva mais difícil do circuito e garante pódio histórico. Veja o momento!</p>
+                    <div class="news-meta">
+                        <span>📅 Hoje, 10:48</span>
+                        <span>👁️ 15.2k views</span>
+                    </div>
+                    <div class="reaction-bar">
+                        <button class="reaction-btn like-btn" onclick="reaction(this, 'like')">
+                            👍 <span class="count">0</span> Curti
+                        </button>
+                        <button class="reaction-btn dislike-btn" onclick="reaction(this, 'dislike')">
+                            👎 <span class="count">0</span> Não Curti
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Notícia 4 - Tênis -->
+            <article class="news-card" data-id="4">
+                <div class="news-image">
+                    <img src="https://media.giphy.com/media/l0HlBO7eyXzSZkJri/giphy.gif" alt="Tênis saque">
+                    <span class="news-category">Tênis</span>
+                </div>
+                <div class="news-content">
+                    <h3 class="news-title">Final de Grand Slam tem virada épica em 5 sets</h3>
+                    <p class="news-description">Depois de perder os dois primeiros sets, tenista faz virada histórica e conquista seu terceiro título de Grand Slam na carreira.</p>
+                    <div class="news-meta">
+                        <span>📅 Ontem, 22:10</span>
+                        <span>👁️ 6.7k views</span>
+                    </div>
+                    <div class="reaction-bar">
+                        <button class="reaction-btn like-btn" onclick="reaction(this, 'like')">
+                            👍 <span class="count">0</span> Curti
+                        </button>
+                        <button class="reaction-btn dislike-btn" onclick="reaction(this, 'dislike')">
+                            👎 <span class="count">0</span> Não Curti
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Notícia 5 - MMA -->
+            <article class="news-card" data-id="5">
+                <div class="news-image">
+                    <img src="https://media.giphy.com/media/3o7btPCcdNniyf0ArS/giphy.gif" alt="MMA luta">
+                    <span class="news-category">MMA</span>
+                </div>
+                <div class="news-content">
+                    <h3 class="news-title">Nocaute em 12 segundos entra para a história do UFC</h3>
+                    <p class="news-description">Lutador surpreende ao nocautear adversário nos primeiros segundos do combate e crava marca histórica no octógono.</p>
+                    <div class="news-meta">
+                        <span>📅 Ontem, 20:05</span>
+                        <span>👁️ 22.1k views</span>
+                    </div>
+                    <div class="reaction-bar">
+                        <button class="reaction-btn like-btn" onclick="reaction(this, 'like')">
+                            👍 <span class="count">0</span> Curti
+                        </button>
+                        <button class="reaction-btn dislike-btn" onclick="reaction(this, 'dislike')">
+                            👎 <span class="count">0</span> Não Curti
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Notícia 6 - Skate -->
+            <article class="news-card" data-id="6">
+                <div class="news-image">
+                    <img src="https://media.giphy.com/media/26BRuo6sLetdllPAQ/giphy.gif" alt="Skate manobra">
+                    <span class="news-category">Skate</span>
+                </div>
+                <div class="news-content">
+                    <h3 class="news-title">Skatista brasileiro conquista ouro em competição mundial</h3>
+                    <p class="news-description">Com manobra inédita na última rodada, atleta garante medalha de ouro e vaga nas próximas Olimpíadas.</p>
+                    <div class="news-meta">
+                        <span>📅 Ontem, 18:42</span>
+                        <span>👁️ 9.3k views</span>
+                    </div>
+                    <div class="reaction-bar">
+                        <button class="reaction-btn like-btn" onclick="reaction(this, 'like')">
+                            👍 <span class="count">0</span> Curti
+                        </button>
+                        <button class="reaction-btn dislike-btn" onclick="reaction(this, 'dislike')">
+                            👎 <span class="count">0</span> Não Curti
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+        </div>
     </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p><strong>SportNews</strong> © 2025 - Todas as notícias do esporte em um só lugar</p>
+            <p>Feito com ⚡ para os amantes do esporte</p>
+        </div>
+    </footer>
+
+    <!-- Toast -->
+    <div class="toast" id="toast"></div>
+
+    <script>
+        // Estado das reações por notícia
+        const reactionsState = {};
+
+        function reaction(btn, type) {
+            const card = btn.closest('.news-card');
+            const id = card.dataset.id;
+
+            // Inicializa estado se não existir
+            if (!reactionsState[id]) {
+                reactionsState[id] = { like: false, dislike: false };
+            }
+
+            const state = reactionsState[id];
+            const likeBtn = card.querySelector('.like-btn');
+            const dislikeBtn = card.querySelector('.dislike-btn');
+            const likeCount = likeBtn.querySelector('.count');
+            const dislikeCount = dislikeBtn.querySelector('.count');
+
+            // Inicializa contadores visualmente se for primeira vez
+            if (likeCount.textContent === '0' && !likeBtn.dataset.init) {
+                likeCount.textContent = Math.floor(Math.random() * 200) + 50;
+                dislikeCount.textContent = Math.floor(Math.random() * 30) + 5;
+                likeBtn.dataset.init = 'true';
+            }
+
+            let currentLikes = parseInt(likeCount.textContent);
+            let currentDislikes = parseInt(dislikeCount.textContent);
+
+            if (type === 'like') {
+                if (state.like) {
+                    // Remove o like
+                    state.like = false;
+                    likeBtn.classList.remove('active');
+                    likeCount.textContent = currentLikes - 1;
+                    showToast('👋 Like removido');
+                } else {
+                    // Adiciona o like
+                    state.like = true;
+                    likeBtn.classList.add('active');
+                    likeCount.textContent = currentLikes + 1;
+                    showToast('👍 Você curtiu esta notícia!');
+
+                    // Se tinha dislike, remove
+                    if (state.dislike) {
+                        state.dislike = false;
+                        dislikeBtn.classList.remove('active');
+                        dislikeCount.textContent = currentDislikes - 1;
+                    }
+                }
+            } else if (type === 'dislike') {
+                if (state.dislike) {
+                    state.dislike = false;
+                    dislikeBtn.classList.remove('active');
+                    dislikeCount.textContent = currentDislikes - 1;
+                    showToast('👋 Deslike removido');
+                } else {
+                    state.dislike = true;
+                    dislikeBtn.classList.add('active');
+                    dislikeCount.textContent = currentDislikes + 1;
+                    showToast('👎 Você não curtiu esta notícia');
+
+                    if (state.like) {
+                        state.like = false;
+                        likeBtn.classList.remove('active');
+                        likeCount.textContent = currentLikes - 1;
+                    }
+                }
+            }
+        }
+
+        // Toast de notificação
+        let toastTimeout;
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2000);
+        }
+    </script>
+
 </body>
 </html>
