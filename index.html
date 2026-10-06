@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🇧🇷 Eleições 2026 | Vote e Compare</title>
+    <title>🧪 10 Motivos para o 10 em Química</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
-            background: linear-gradient(135deg, #0a0f1a 0%, #111827 50%, #0d1420 100%);
+            background: linear-gradient(135deg, #0a1628 0%, #1a2744 40%, #0f1e3d 70%, #0a1628 100%);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -19,235 +19,537 @@
             overflow-x: hidden;
         }
 
-        /* Partículas de fundo */
+        /* Partículas de fundo (átomos flutuantes) */
         .bg-particles {
             position: fixed; inset: 0;
             pointer-events: none; z-index: 0; overflow: hidden;
         }
         .bg-dot {
-            position: absolute; width: 2px; height: 2px;
-            border-radius: 50%; opacity: 0.12;
+            position: absolute;
+            border-radius: 50%;
             animation: floatDot linear infinite;
         }
         @keyframes floatDot {
-            0% { transform: translateY(100vh); opacity: 0; }
-            10% { opacity: 0.2; }
-            90% { opacity: 0.2; }
-            100% { transform: translateY(-50px); opacity: 0; }
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.4; }
+            90% { opacity: 0.4; }
+            100% { transform: translateY(-50px) rotate(360deg); opacity: 0; }
         }
 
+        /* Header */
         header {
             text-align: center; margin-bottom: 25px;
-            padding: 25px 35px;
-            background: linear-gradient(145deg, rgba(15,23,42,0.95), rgba(17,24,39,0.98));
-            border: 1px solid #1e3a5f; border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-            max-width: 900px; width: 100%; z-index: 2; position: relative;
-        }
-        h1 { font-size: 1.8rem; color: #f9fafb; letter-spacing: 2px; margin-bottom: 8px; }
-        .subtitle { font-size: 0.95rem; color: #9ca3af; }
-        .divider {
-            width: 180px; height: 2px;
-            background: linear-gradient(to right, transparent, #3b82f6, #8b5cf6, transparent);
-            margin: 12px auto;
+            padding: 30px 40px;
+            background: linear-gradient(145deg, rgba(20, 35, 65, 0.95), rgba(15, 28, 55, 0.98));
+            border: 2px solid #06b6d4;
+            border-radius: 20px;
+            box-shadow:
+                0 10px 40px rgba(0, 0, 0, 0.5),
+                0 0 60px rgba(6, 182, 212, 0.2),
+                inset 0 0 40px rgba(6, 182, 212, 0.05);
+            max-width: 850px; width: 100%; z-index: 2; position: relative;
+            overflow: hidden;
         }
 
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.1), transparent);
+            animation: shimmer 4s infinite;
+        }
+        @keyframes shimmer {
+            0% { left: -100%; }
+            50%, 100% { left: 100%; }
+        }
+
+        /* Erlenmeyer animado (GIF em CSS) */
+        .flask {
+            width: 60px;
+            height: 80px;
+            margin: 0 auto 15px;
+            position: relative;
+            filter: drop-shadow(0 0 15px rgba(6, 182, 212, 0.6));
+            animation: flaskFloat 3s ease-in-out infinite;
+        }
+        @keyframes flaskFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-8px) rotate(2deg); }
+        }
+
+        .flask-neck {
+            width: 20px; height: 25px;
+            background: linear-gradient(90deg, rgba(200,230,255,0.3), rgba(220,240,255,0.5), rgba(200,230,255,0.3));
+            margin: 0 auto;
+            border-left: 2px solid rgba(150, 200, 255, 0.6);
+            border-right: 2px solid rgba(150, 200, 255, 0.6);
+            position: relative;
+        }
+        .flask-neck::before {
+            content: '';
+            position: absolute;
+            top: -3px; left: -4px; right: -4px;
+            height: 6px;
+            background: linear-gradient(90deg, #0891b2, #06b6d4, #0891b2);
+            border-radius: 3px;
+        }
+
+        .flask-body {
+            width: 60px; height: 55px;
+            background: linear-gradient(180deg, rgba(200,230,255,0.2) 0%, rgba(6,182,212,0.3) 60%, rgba(16,185,129,0.4) 100%);
+            clip-path: polygon(20% 0, 80% 0, 100% 100%, 0% 100%);
+            position: relative;
+            border: 2px solid rgba(150, 200, 255, 0.6);
+            border-top: none;
+        }
+
+        .flask-liquid {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 60%;
+            background: linear-gradient(180deg, rgba(6,182,212,0.7), rgba(16,185,129,0.9));
+            clip-path: polygon(20% 0, 80% 0, 100% 100%, 0% 100%);
+            animation: liquidWave 2s ease-in-out infinite;
+        }
+        @keyframes liquidWave {
+            0%, 100% { height: 60%; }
+            50% { height: 65%; }
+        }
+
+        /* Bolhas subindo */
+        .bubble {
+            position: absolute;
+            background: radial-gradient(circle, rgba(255,255,255,0.9), rgba(6,182,212,0.5));
+            border-radius: 50%;
+            animation: bubbleUp 3s ease-in infinite;
+        }
+        @keyframes bubbleUp {
+            0% { bottom: 0; opacity: 0; transform: scale(0.5); }
+            20% { opacity: 1; }
+            100% { bottom: 100%; opacity: 0; transform: scale(1.2); }
+        }
+
+        h1 {
+            font-size: 1.9rem;
+            background: linear-gradient(135deg, #06b6d4, #22d3ee, #10b981, #06b6d4);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            animation: gradientMove 4s ease infinite;
+            font-weight: 800;
+        }
+        @keyframes gradientMove {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            color: #94a3b8;
+            letter-spacing: 1px;
+        }
+
+        .divider {
+            width: 200px; height: 2px;
+            background: linear-gradient(to right, transparent, #06b6d4, #10b981, #06b6d4, transparent);
+            margin: 15px auto;
+        }
+
+        /* Card principal */
         .main-card {
-            background: linear-gradient(145deg, rgba(15,23,42,0.95), rgba(17,24,39,0.98));
-            border: 1px solid #1e3a5f; border-radius: 20px;
-            padding: 30px; max-width: 900px; width: 100%;
-            box-shadow: 0 15px 50px rgba(0,0,0,0.6);
+            background: linear-gradient(145deg, rgba(20, 35, 65, 0.95), rgba(15, 28, 55, 0.98));
+            border: 2px solid rgba(6, 182, 212, 0.4);
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 850px; width: 100%;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.6);
             margin-bottom: 25px; z-index: 2; position: relative;
         }
 
-        /* Ranking em tempo real */
-        .ranking-section {
+        /* Carta para a professora */
+        .letter {
+            background: rgba(6, 182, 212, 0.08);
+            border-left: 4px solid #06b6d4;
+            border-radius: 10px;
+            padding: 20px 25px;
             margin-bottom: 30px;
-            padding: 20px;
-            background: rgba(30,41,59,0.4);
-            border: 1px solid #1e3a5f;
-            border-radius: 15px;
+            font-style: italic;
+            color: #cbd5e1;
+            line-height: 1.8;
+            font-size: 0.95rem;
+            position: relative;
         }
-        .ranking-section h3 {
-            font-size: 1rem; color: #f9fafb; margin-bottom: 15px;
-            display: flex; align-items: center; gap: 8px;
+        .letter::before {
+            content: '💌';
+            position: absolute;
+            top: -12px; left: 15px;
+            background: #0f1c37;
+            padding: 0 8px;
+            font-size: 1.2rem;
         }
-        .ranking-list { display: flex; flex-direction: column; gap: 10px; }
-        .rank-item {
-            display: flex; align-items: center; gap: 12px;
-            padding: 10px 15px; background: rgba(30,41,59,0.5);
-            border-radius: 10px; border: 1px solid transparent;
-            transition: all 0.4s ease;
-        }
-        .rank-item.top-1 { border-color: #f59e0b; background: rgba(245,158,11,0.1); }
-        .rank-item.top-2 { border-color: #9ca3af; }
-        .rank-item.top-3 { border-color: #b45309; }
-        .rank-position {
-            width: 28px; height: 28px; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 0.8rem; font-weight: bold;
-            background: #374151; color: #9ca3af; flex-shrink: 0;
-        }
-        .rank-item.top-1 .rank-position { background: #f59e0b; color: #000; }
-        .rank-item.top-2 .rank-position { background: #9ca3af; color: #000; }
-        .rank-item.top-3 .rank-position { background: #b45309; color: #fff; }
-        .rank-avatar {
-            width: 36px; height: 36px; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 0.85rem; font-weight: bold; color: #fff; flex-shrink: 0;
-        }
-        .rank-info { flex: 1; }
-        .rank-name { font-size: 0.9rem; color: #f9fafb; font-weight: 600; }
-        .rank-party { font-size: 0.75rem; color: #6b7280; }
-        .rank-votes {
-            font-size: 1.1rem; font-weight: bold; color: #f9fafb;
-            min-width: 50px; text-align: right;
-        }
-        .rank-bar-container {
-            width: 100px; height: 6px; background: #1f2937;
-            border-radius: 3px; overflow: hidden; flex-shrink: 0;
-        }
-        .rank-bar {
-            height: 100%; border-radius: 3px;
-            transition: width 0.8s ease;
+        .letter strong {
+            color: #22d3ee;
+            font-style: normal;
         }
 
-        /* Grid de candidatos */
-        .candidates-grid {
+        /* Grid de motivos */
+        .reasons-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
             gap: 15px;
             margin-bottom: 25px;
         }
 
-        .candidate-card {
-            background: rgba(30,41,59,0.5);
-            border: 1px solid #1e3a5f;
+        .reason-card {
+            background: rgba(30, 45, 75, 0.5);
+            border: 1px solid rgba(6, 182, 212, 0.2);
             border-radius: 14px;
-            padding: 18px 15px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.35s cubic-bezier(0.175,0.885,0.32,1.275);
+            padding: 20px 18px;
+            transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
             overflow: hidden;
+            cursor: pointer;
         }
-        .candidate-card:hover {
-            transform: translateY(-4px);
-            border-color: #3b82f6;
-            box-shadow: 0 8px 25px rgba(59,130,246,0.2);
+        .reason-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 4px; height: 100%;
+            background: linear-gradient(180deg, #06b6d4, #10b981);
+            transform: scaleY(0);
+            transform-origin: bottom;
+            transition: transform 0.3s ease;
         }
-        .candidate-card.voted {
+        .reason-card:hover::before { transform: scaleY(1); }
+        .reason-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(6, 182, 212, 0.6);
+            box-shadow: 0 10px 30px rgba(6, 182, 212, 0.2);
+            background: rgba(30, 45, 75, 0.8);
+        }
+        .reason-card.checked {
+            border-color: rgba(34, 197, 94, 0.6);
+            background: rgba(34, 197, 94, 0.08);
+        }
+
+        .reason-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px; height: 32px;
+            border-radius: 50%;
+            background: linear-gradient(145deg, #06b6d4, #0891b2);
+            color: #fff;
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+            box-shadow: 0 0 15px rgba(6, 182, 212, 0.5);
+        }
+
+        .reason-title {
+            font-size: 1rem;
+            color: #f1f5f9;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: 0.3px;
+        }
+
+        .reason-text {
+            font-size: 0.85rem;
+            color: #94a3b8;
+            line-height: 1.6;
+        }
+
+        .reason-emoji {
+            position: absolute;
+            top: 15px; right: 15px;
+            font-size: 1.5rem;
+            opacity: 0.3;
+            transition: all 0.3s ease;
+        }
+        .reason-card:hover .reason-emoji {
+            opacity: 1;
+            transform: scale(1.2) rotate(10deg);
+        }
+
+        /* Contador e barra */
+        .progress-section {
+            background: rgba(30, 45, 75, 0.5);
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: #cbd5e1;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .progress-bar {
+            height: 24px;
+            background: #1f2937;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            box-shadow: inset 0 2px 8px rgba(0,0,0,0.5);
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #06b6d4, #22d3ee, #10b981, #22d3ee, #06b6d4);
+            background-size: 200% 100%;
+            width: 0%;
+            transition: width 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border-radius: 12px 0 0 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 0.75rem;
+            font-weight: bold;
+            animation: progressShimmer 2s linear infinite;
+            box-shadow: 0 0 20px rgba(6, 182, 212, 0.6);
+            min-width: 0;
+            overflow: hidden;
+        }
+        @keyframes progressShimmer {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+
+        /* Botões de Like/Dislike */
+        .vote-section {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .vote-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            padding: 22px 35px;
+            border: 2px solid;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: bold;
+            min-width: 160px;
+            position: relative;
+            overflow: hidden;
+            background: rgba(30, 45, 75, 0.5);
+        }
+
+        .vote-btn.like {
+            border-color: #10b981;
+            color: #6ee7b7;
+        }
+        .vote-btn.like:hover {
+            background: rgba(16, 185, 129, 0.15);
+            box-shadow: 0 0 30px rgba(16, 185, 129, 0.4);
+            transform: translateY(-5px) scale(1.03);
+        }
+
+        .vote-btn.dislike {
+            border-color: #ef4444;
+            color: #fca5a5;
+        }
+        .vote-btn.dislike:hover {
+            background: rgba(239, 68, 68, 0.15);
+            box-shadow: 0 0 30px rgba(239, 68, 68, 0.4);
+            transform: translateY(-5px) scale(1.03);
+        }
+
+        .vote-btn.voted {
             cursor: default;
             pointer-events: none;
-            opacity: 0.75;
-        }
-        .candidate-card.selected {
-            border-color: #22c55e;
-            box-shadow: 0 0 25px rgba(34,197,94,0.4);
-            background: rgba(34,197,94,0.1);
+            opacity: 0.7;
         }
 
-        .candidate-avatar {
-            width: 60px; height: 60px; border-radius: 50%;
-            margin: 0 auto 10px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.3rem; font-weight: bold; color: #fff;
-            position: relative;
+        .vote-btn .icon {
+            font-size: 2rem;
+            transition: transform 0.3s;
         }
-        .candidate-avatar::after {
-            content: attr(data-num);
-            position: absolute; bottom: -2px; right: -2px;
-            background: #111827; color: #f59e0b;
-            font-size: 0.6rem; font-weight: bold;
-            padding: 2px 6px; border-radius: 8px;
-            border: 1px solid #f59e0b;
+        .vote-btn:hover .icon { transform: scale(1.2); }
+
+        .vote-btn .label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
         }
 
-        .candidate-name {
-            font-size: 0.9rem; color: #f9fafb;
-            font-weight: 600; margin-bottom: 3px;
-        }
-        .candidate-party {
-            font-size: 0.75rem; color: #6b7280;
-        }
-        .candidate-votes {
-            font-size: 1.2rem; font-weight: bold;
-            color: #f9fafb; margin-top: 8px;
-        }
-        .candidate-percent {
-            font-size: 0.75rem; color: #6b7280;
+        .vote-btn .count {
+            font-size: 1.3rem;
+            font-weight: 900;
+            color: #f9fafb;
         }
 
-        /* Barra de progresso individual */
-        .candidate-bar {
-            width: 100%; height: 4px;
-            background: #1f2937; border-radius: 2px;
-            margin-top: 8px; overflow: hidden;
+        .vote-btn.liked {
+            background: linear-gradient(145deg, #065f46, #10b981);
+            border-color: #6ee7b7;
+            color: #fff;
         }
-        .candidate-bar-fill {
-            height: 100%; border-radius: 2px;
-            transition: width 0.6s ease;
+
+        .vote-btn.disliked {
+            background: linear-gradient(145deg, #7f1d1d, #ef4444);
+            border-color: #fca5a5;
+            color: #fff;
+        }
+
+        /* Barra comparativa */
+        .comparison-bar {
+            margin-top: 20px;
+        }
+        .comparison-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: #94a3b8;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        .comparison-track {
+            height: 26px;
+            background: #1f2937;
+            border-radius: 13px;
+            overflow: hidden;
+            display: flex;
+            border: 1px solid rgba(6, 182, 212, 0.3);
+        }
+        .track-like {
+            background: linear-gradient(90deg, #065f46, #10b981, #6ee7b7);
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.75rem;
+            font-weight: bold;
+            transition: width 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            min-width: 0;
+            overflow: hidden;
+        }
+        .track-dislike {
+            background: linear-gradient(90deg, #7f1d1d, #ef4444, #fca5a5);
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.75rem;
+            font-weight: bold;
+            transition: width 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            min-width: 0;
+            overflow: hidden;
         }
 
         /* Status */
         .status-msg {
-            text-align: center; padding: 14px; border-radius: 10px;
-            font-weight: 600; display: none;
-            animation: fadeIn 0.5s ease; font-size: 0.9rem;
-            margin-top: 15px;
+            text-align: center;
+            padding: 15px;
+            border-radius: 12px;
+            font-weight: 600;
+            display: none;
+            animation: fadeIn 0.5s ease;
+            font-size: 0.9rem;
+            margin-top: 20px;
         }
         .status-msg.show { display: block; }
         .status-msg.success {
-            background: rgba(34,197,94,0.15);
+            background: rgba(34, 197, 94, 0.15);
             color: #4ade80;
-            border: 1px solid rgba(34,197,94,0.3);
+            border: 1px solid rgba(34, 197, 94, 0.3);
         }
         .status-msg.info {
-            background: rgba(59,130,246,0.15);
-            color: #93c5fd;
-            border: 1px solid rgba(59,130,246,0.3);
+            background: rgba(6, 182, 212, 0.15);
+            color: #67e8f9;
+            border: 1px solid rgba(6, 182, 212, 0.3);
         }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(-10px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Nota sobre votos compartilhados */
-        .shared-note {
+        /* Botão "copiar mensagem" */
+        .copy-section {
             text-align: center;
-            padding: 12px;
-            background: rgba(139,92,246,0.1);
-            border: 1px solid rgba(139,92,246,0.3);
-            border-radius: 10px;
-            margin-bottom: 20px;
-            font-size: 0.8rem;
-            color: #c4b5fd;
+            margin-top: 25px;
+            padding-top: 25px;
+            border-top: 1px dashed rgba(6, 182, 212, 0.3);
         }
+        .copy-btn {
+            padding: 14px 30px;
+            background: linear-gradient(145deg, #06b6d4, #0891b2);
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+            box-shadow: 0 5px 20px rgba(6, 182, 212, 0.4);
+        }
+        .copy-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(6, 182, 212, 0.6);
+        }
+        .copy-btn:active { transform: translateY(-1px); }
 
+        /* Footer */
         footer {
-            text-align: center; color: #6b7280;
+            text-align: center; color: #64748b;
             font-size: 0.8rem; padding: 20px;
-            max-width: 900px; line-height: 1.8; z-index: 2;
+            max-width: 850px; line-height: 1.8; z-index: 2;
         }
-        footer .flag { font-size: 1.5rem; display: block; margin-bottom: 8px; }
+        footer .flask-icon {
+            font-size: 1.5rem;
+            display: block;
+            margin-bottom: 8px;
+        }
+        footer .heart { color: #ef4444; }
 
+        /* Responsivo */
         @media (max-width: 600px) {
             h1 { font-size: 1.3rem; }
             header { padding: 20px 15px; }
-            .main-card { padding: 18px; }
-            .candidates-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-            .candidate-card { padding: 12px 8px; }
-            .candidate-avatar { width: 45px; height: 45px; font-size: 1rem; }
-            .candidate-name { font-size: 0.8rem; }
-            .rank-bar-container { width: 60px; }
+            .main-card { padding: 20px 15px; }
+            .reasons-grid { grid-template-columns: 1fr; gap: 12px; }
+            .vote-section { gap: 15px; }
+            .vote-btn { padding: 18px 25px; min-width: 140px; }
+            .vote-btn .icon { font-size: 1.6rem; }
+            .letter { padding: 15px 18px; font-size: 0.85rem; }
         }
 
         @keyframes pulse {
             0% { transform: scale(1); }
-            50% { transform: scale(1.06); }
+            50% { transform: scale(1.05); }
             100% { transform: scale(1); }
         }
         .pulse { animation: pulse 0.4s ease; }
+
+        /* Confetes */
+        .confetti {
+            position: fixed;
+            width: 10px; height: 10px;
+            pointer-events: none;
+            z-index: 9999;
+        }
     </style>
 </head>
 <body>
@@ -255,218 +557,316 @@
     <div class="bg-particles" id="bgParticles"></div>
 
     <header>
-        <h1>🇧🇷 Eleições 2026</h1>
+        <!-- Erlenmeyer animado -->
+        <div class="flask">
+            <div class="flask-neck">
+                <div class="bubble" style="left: 4px; width: 3px; height: 3px; animation-delay: 0s;"></div>
+                <div class="bubble" style="left: 12px; width: 4px; height: 4px; animation-delay: 1s;"></div>
+            </div>
+            <div class="flask-body">
+                <div class="flask-liquid"></div>
+                <div class="bubble" style="left: 15px; width: 5px; height: 5px; animation-delay: 0.5s;"></div>
+                <div class="bubble" style="left: 35px; width: 4px; height: 4px; animation-delay: 1.5s;"></div>
+                <div class="bubble" style="left: 25px; width: 3px; height: 3px; animation-delay: 2s;"></div>
+            </div>
+        </div>
+
+        <h1>🧪 10 Motivos para o 10 em Química 🧪</h1>
         <div class="divider"></div>
-        <p class="subtitle">Compare os candidatos. Vote no seu preferido.</p>
+        <p class="subtitle">Uma carta aberta para a melhor professora do mundo</p>
     </header>
 
     <main class="main-card">
 
-        <!-- Nota sobre votos compartilhados -->
-        <div class="shared-note">
-            🌐 <strong>Votos em tempo real:</strong> Seu voto é compartilhado entre todos os visitantes desta página. Veja quem está liderando!
+        <!-- Carta -->
+        <div class="letter">
+            <strong>Querida professora,</strong><br>
+            Sei que a senhora corrige centenas de provas, prepara aulas incríveis e ainda tem paciência para explicar
+            <strong>ligações químicas</strong> pela milésima vez. Então preparei esta lista com muito carinho (e um pouco de química)
+            para mostrar por que eu <strong>mereço um 10</strong>. Leia até o final, por favor! 🙏
         </div>
 
-        <!-- Ranking em tempo real -->
-        <div class="ranking-section">
-            <h3>🏆 Ranking em Tempo Real</h3>
-            <div class="ranking-list" id="rankingList">
-                <!-- Preenchido via JavaScript -->
+        <!-- Grid de motivos -->
+        <div class="reasons-grid" id="reasonsGrid">
+            <!-- Preenchido via JavaScript -->
+        </div>
+
+        <!-- Progresso de motivos -->
+        <div class="progress-section">
+            <div class="progress-label">
+                <span>🧪 Motivos considerados</span>
+                <span id="percentText">0%</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill">
+                    <span id="fillText"></span>
+                </div>
             </div>
         </div>
 
-        <!-- Grid de candidatos -->
-        <h3 style="font-size:1rem; color:#f9fafb; margin-bottom:15px; display:flex; align-items:center; gap:8px;">
-            🗳️ Escolha seu candidato
+        <!-- Like / Dislike -->
+        <h3 style="text-align:center; color:#f1f5f9; font-size:1.05rem; margin-bottom:20px;">
+            💚 Você concorda que eu mereço um 10? 💚
         </h3>
-        <div class="candidates-grid" id="candidatesGrid">
-            <!-- Preenchido via JavaScript -->
+
+        <div class="vote-section">
+            <button class="vote-btn like" id="likeBtn" onclick="votar('like')">
+                <span class="icon">👍</span>
+                <span class="label">Sim, mereço!</span>
+                <span class="count" id="likeCount">0</span>
+            </button>
+
+            <button class="vote-btn dislike" id="dislikeBtn" onclick="votar('dislike')">
+                <span class="icon">👎</span>
+                <span class="label">Precisa estudar mais</span>
+                <span class="count" id="dislikeCount">0</span>
+            </button>
+        </div>
+
+        <!-- Barra comparativa -->
+        <div class="comparison-bar">
+            <div class="comparison-label">
+                <span>💚 Mereço o 10</span>
+                <span>📚 Preciso estudar mais</span>
+            </div>
+            <div class="comparison-track">
+                <div class="track-like" id="trackLike" style="width: 50%;"></div>
+                <div class="track-dislike" id="trackDislike" style="width: 50%;"></div>
+            </div>
         </div>
 
         <div class="status-msg" id="statusMsg"></div>
 
+        <!-- Botão copiar mensagem -->
+        <div class="copy-section">
+            <button class="copy-btn" onclick="copiarMensagem()">
+                📋 Copiar mensagem para enviar à professora
+            </button>
+        </div>
+
     </main>
 
     <footer>
-        <span class="flag">🇧🇷</span>
-        <strong>Política Brasil 2026</strong><br>
-        Informação imparcial. A escolha é sua.<br>
-        <em>Este site não endossa nenhum candidato.</em>
+        <span class="flask-icon">🧪⚗️🔬</span>
+        Feito com muito carinho (e um pouquinho de química) para a <strong>melhor professora do mundo</strong>.<br>
+        <em>H₂O + carinho = nota 10 ✨</em><br>
+        <span class="heart">❤</span> Obrigado por tudo, professora! <span class="heart">❤</span>
     </footer>
 
     <script>
-        // ===== DADOS DOS CANDIDATOS =====
-        // Baseado nas informações oficiais do TSE e pesquisas de 2026
-        const CANDIDATOS = [
-            { id: 'lula', nome: 'Lula', partido: 'PT', numero: '13', cor: '#dc2626', cor2: '#991b1b' },
-            { id: 'flavio', nome: 'Flávio Bolsonaro', partido: 'PL', numero: '22', cor: '#2563eb', cor2: '#1e40af' },
-            { id: 'caiado', nome: 'Ronaldo Caiado', partido: 'PSD', numero: '55', cor: '#059669', cor2: '#047857' },
-            { id: 'renan', nome: 'Renan Santos', partido: 'Missão', numero: '14', cor: '#7c3aed', cor2: '#6d28d9' },
-            { id: 'cury', nome: 'Augusto Cury', partido: 'Avante', numero: '70', cor: '#ea580c', cor2: '#c2410c' },
-            { id: 'zema', nome: 'Romeu Zema', partido: 'Novo', numero: '30', cor: '#0891b2', cor2: '#0e7490' },
-            { id: 'edmilson', nome: 'Edmilson Costa', partido: 'PCB', numero: '21', cor: '#b91c1c', cor2: '#991b1b' },
-            { id: 'hertz', nome: 'Hertz Dias', partido: 'PSTU', numero: '16', cor: '#db2777', cor2: '#be185d' },
-            { id: 'samara', nome: 'Samara Martins', partido: 'UP', numero: '80', cor: '#f59e0b', cor2: '#d97706' },
-            { id: 'clariana', nome: 'Clariana Barão', partido: 'DC', numero: '27', cor: '#10b981', cor2: '#059669' },
-            { id: 'rui', nome: 'Rui Costa Pimenta', partido: 'PCO', numero: '29', cor: '#ef4444', cor2: '#dc2626' },
-            { id: 'grassi', nome: 'Wilson Grassi', partido: 'Democrata', numero: '35', cor: '#6366f1', cor2: '#4f46e5' },
+        // ===== MOTIVOS =====
+        const MOTIVOS = [
+            {
+                emoji: '📚',
+                titulo: 'Estudei TUDO que a senhora pediu',
+                texto: 'Da tabela periódica às reações orgânicas. Cada elemento, cada ligação, cada fórmula. Não sobrou uma vírgula!'
+            },
+            {
+                emoji: '🧠',
+                titulo: 'Meu cérebro virou uma tabela periódica',
+                texto: 'De tanto estudar, agora eu sonho com elétrons orbitando. Até meu gato já sabe o que é um átomo!'
+            },
+            {
+                emoji: '✏️',
+                titulo: 'Fiz TODAS as listas de exercícios',
+                texto: 'Inclusive as "extras" que a senhora passou como desafio. Levei 3 noites, mas terminei todas!'
+            },
+            {
+                emoji: '🤝',
+                titulo: 'Ajudei meus colegas a entenderem',
+                texto: 'Expliquei ligações covalentes para metade da turma. A senhora me ensinou tão bem que eu virei monitor(a) sem querer!'
+            },
+            {
+                emoji: '😅',
+                titulo: 'Nunca mais dormi na sua aula',
+                texto: 'A senhora tem o dom de fazer até estequiometria parecer emocionante. Isso é química pura entre nós!'
+            },
+            {
+                emoji: '🔥',
+                titulo: 'Participei de TODAS as aulas',
+                texto: 'Perguntei, respondi, levantei a mão. Fui aquele aluno que a senhora sempre sonhou em ter na sala!'
+            },
+            {
+                emoji: '🧪',
+                titulo: 'Amei cada experimento prático',
+                texto: 'Mesmo quando algo explodia errado, eu estava lá, curioso(a) e prestando atenção. Ciência se aprende na prática!'
+            },
+            {
+                emoji: '📝',
+                titulo: 'Tirei boas notas nas outras provas',
+                texto: 'Química foi a matéria que mais me dediquei. Se eu fui bem nas outras, imagina nesta que eu amo!'
+            },
+            {
+                emoji: '💡',
+                titulo: 'Entendi a matéria DE VERDADE',
+                texto: 'Não decorei: eu entendi. Sei explicar com minhas palavras, do balanceamento ao pH. Isso é aprendizado real!'
+            },
+            {
+                emoji: '❤️',
+                titulo: 'A senhora é minha professora favorita',
+                texto: 'E isso não é puxa-saquismo! A senhora realmente transformou química em algo mágico. Meu 10 é só uma consequência!'
+            }
         ];
 
-        // ===== INICIALIZAÇÃO DOS VOTOS =====
-        // Tentamos carregar votos da "nuvem" via localStorage (simula votos compartilhados)
-        function carregarVotosGlobais() {
-            const votosSalvos = localStorage.getItem('votos_eleicao_2026_global');
-            if (votosSalvos) {
-                try {
-                    const parsed = JSON.parse(votosSalvos);
-                    // Inicializa votos
-                    CANDIDATOS.forEach(c => {
-                        c.votos = parsed[c.id] || 0;
-                    });
-                    return;
-                } catch(e) {}
-            }
-            // Se não há votos salvos, todos começam com 0
-            CANDIDATOS.forEach(c => { c.votos = 0; });
-        }
-
-        // ===== RENDERIZAR CARDS DOS CANDIDATOS =====
-        function renderizarCandidatos() {
-            const grid = document.getElementById('candidatesGrid');
+        // ===== RENDERIZAR MOTIVOS =====
+        function renderizarMotivos() {
+            const grid = document.getElementById('reasonsGrid');
             grid.innerHTML = '';
 
-            CANDIDATOS.forEach(c => {
+            MOTIVOS.forEach((m, index) => {
                 const card = document.createElement('div');
-                card.className = 'candidate-card';
-                card.id = 'card-' + c.id;
-                card.onclick = () => votar(c.id);
+                card.className = 'reason-card';
+                card.onclick = () => marcarMotivo(card);
                 card.innerHTML = `
-                    <div class="candidate-avatar" data-num="${c.numero}" style="background: linear-gradient(145deg, ${c.cor}, ${c.cor2});">
-                        ${c.nome.charAt(0)}
-                    </div>
-                    <div class="candidate-name">${c.nome}</div>
-                    <div class="candidate-party">${c.partido}</div>
-                    <div class="candidate-votes" id="votos-${c.id}">${c.votos || 0}</div>
-                    <div class="candidate-percent" id="pct-${c.id}">0%</div>
-                    <div class="candidate-bar">
-                        <div class="candidate-bar-fill" id="bar-${c.id}" style="width:0%; background: linear-gradient(90deg, ${c.cor}, ${c.cor2});"></div>
-                    </div>
+                    <span class="reason-emoji">${m.emoji}</span>
+                    <div class="reason-number">${index + 1}</div>
+                    <div class="reason-title">${m.titulo}</div>
+                    <div class="reason-text">${m.texto}</div>
                 `;
                 grid.appendChild(card);
             });
         }
 
-        // ===== RENDERIZAR RANKING =====
-        function renderizarRanking() {
-            const lista = document.getElementById('rankingList');
-            const total = CANDIDATOS.reduce((acc, c) => acc + (c.votos || 0), 0);
-
-            // Ordenar por votos (decrescente)
-            const ordenados = [...CANDIDATOS].sort((a, b) => (b.votos || 0) - (a.votos || 0));
-
-            lista.innerHTML = '';
-            ordenados.forEach((c, index) => {
-                const pos = index + 1;
-                const pct = total > 0 ? Math.round((c.votos / total) * 100) : 0;
-                const item = document.createElement('div');
-                item.className = 'rank-item' + (pos === 1 ? ' top-1' : pos === 2 ? ' top-2' : pos === 3 ? ' top-3' : '');
-                item.innerHTML = `
-                    <div class="rank-position">${pos}</div>
-                    <div class="rank-avatar" style="background: linear-gradient(145deg, ${c.cor}, ${c.cor2});">${c.nome.charAt(0)}</div>
-                    <div class="rank-info">
-                        <div class="rank-name">${c.nome}</div>
-                        <div class="rank-party">${c.partido} • ${c.numero}</div>
-                    </div>
-                    <div class="rank-bar-container">
-                        <div class="rank-bar" style="width:${pct}%; background: linear-gradient(90deg, ${c.cor}, ${c.cor2});"></div>
-                    </div>
-                    <div class="rank-votes">${c.votos || 0}</div>
-                `;
-                lista.appendChild(item);
-            });
+        // ===== MARCAR MOTIVO COMO CONSIDERADO =====
+        let motivosMarcados = 0;
+        function marcarMotivo(card) {
+            if (card.classList.contains('checked')) return;
+            card.classList.add('checked');
+            card.querySelector('.reason-number').textContent = '✓';
+            card.querySelector('.reason-number').style.background = 'linear-gradient(145deg, #10b981, #059669)';
+            motivosMarcados++;
+            atualizarProgressoMotivos();
         }
 
-        // ===== ATUALIZAR UI =====
-        function atualizarUI() {
-            const total = CANDIDATOS.reduce((acc, c) => acc + (c.votos || 0), 0);
+        function atualizarProgressoMotivos() {
+            const pct = Math.round((motivosMarcados / MOTIVOS.length) * 100);
+            document.getElementById('percentText').textContent = pct + '%';
+            document.getElementById('progressFill').style.width = pct + '%';
 
-            CANDIDATOS.forEach(c => {
-                const pct = total > 0 ? Math.round((c.votos / total) * 100) : 0;
-                const elVotos = document.getElementById('votos-' + c.id);
-                const elPct = document.getElementById('pct-' + c.id);
-                const elBar = document.getElementById('bar-' + c.id);
+            const fillText = document.getElementById('fillText');
+            if (pct > 15) {
+                fillText.textContent = pct + '%';
+            } else {
+                fillText.textContent = '';
+            }
 
-                if (elVotos) elVotos.textContent = c.votos || 0;
-                if (elPct) elPct.textContent = total > 0 ? pct + '%' : '0%';
-                if (elBar) elBar.style.width = total > 0 ? pct + '%' : '0%';
-            });
-
-            renderizarRanking();
+            if (pct === 100) {
+                mostrarStatus('🎉 Você considerou todos os 10 motivos! A professora vai adorar!', 'success');
+                criarConfetes();
+            }
         }
 
-        // ===== VOTAR =====
+        // ===== SISTEMA DE LIKE/DISLIKE =====
+        let likes = 0;
+        let dislikes = 0;
         let jaVotou = false;
 
-        function votar(idCandidato) {
-            // Verifica se já votou nesta sessão
-            if (jaVotou) {
-                mostrarStatus('Você já votou. Obrigado pela participação!', 'info');
-                return;
+        function carregarVotos() {
+            const dados = localStorage.getItem('votos_quimica_prof');
+            if (dados) {
+                try {
+                    const parsed = JSON.parse(dados);
+                    likes = parsed.likes || 0;
+                    dislikes = parsed.dislikes || 0;
+                    jaVotou = parsed.jaVotou || false;
+                } catch(e) {}
             }
-
-            // Verifica se já votou no localStorage (persistente entre visitas)
-            const votoLocal = localStorage.getItem('voto_eleicao_2026_usuario');
-            if (votoLocal) {
-                jaVotou = true;
-                desabilitarTodosCards();
-                marcarCardSelecionado(votoLocal);
-                mostrarStatus('Você já votou anteriormente. Obrigado!', 'info');
-                return;
-            }
-
-            // Incrementa voto
-            const candidato = CANDIDATOS.find(c => c.id === idCandidato);
-            if (!candidato) return;
-
-            candidato.votos = (candidato.votos || 0) + 1;
-            jaVotou = true;
-
-            // Salva voto do usuário
-            localStorage.setItem('voto_eleicao_2026_usuario', idCandidato);
-            // Salva votos globais (simula nuvem)
-            salvarVotosGlobais();
-
-            // Atualiza UI
-            desabilitarTodosCards();
-            marcarCardSelecionado(idCandidato);
             atualizarUI();
+            if (jaVotou) {
+                desabilitarBotoes();
+                if (parsedVoto === 'like') {
+                    document.getElementById('likeBtn').classList.add('liked');
+                } else if (parsedVoto === 'dislike') {
+                    document.getElementById('dislikeBtn').classList.add('disliked');
+                }
+            }
+        }
 
-            // Efeito visual
-            const card = document.getElementById('card-' + idCandidato);
-            if (card) {
-                card.classList.add('pulse');
-                setTimeout(() => card.classList.remove('pulse'), 400);
+        let parsedVoto = null;
+
+        function carregarVotos2() {
+            const dados = localStorage.getItem('votos_quimica_prof');
+            if (dados) {
+                try {
+                    const parsed = JSON.parse(dados);
+                    likes = parsed.likes || 0;
+                    dislikes = parsed.dislikes || 0;
+                    jaVotou = parsed.jaVotou || false;
+                    parsedVoto = parsed.voto || null;
+                } catch(e) {}
+            }
+            atualizarUI();
+            if (jaVotou) {
+                desabilitarBotoes();
+                if (parsedVoto === 'like') {
+                    document.getElementById('likeBtn').classList.add('liked');
+                    mostrarStatus('💚 Você já apoiou! A professora vai amar essa energia positiva!', 'success');
+                } else if (parsedVoto === 'dislike') {
+                    document.getElementById('dislikeBtn').classList.add('disliked');
+                    mostrarStatus('📚 Você já votou que precisa estudar mais. Que tal reconsiderar? 😄', 'info');
+                }
+            }
+        }
+
+        function salvarVotos() {
+            localStorage.setItem('votos_quimica_prof', JSON.stringify({
+                likes,
+                dislikes,
+                jaVotou,
+                voto: parsedVoto
+            }));
+        }
+
+        function votar(tipo) {
+            if (jaVotou) {
+                mostrarStatus('Você já votou! Obrigado pela participação. 💚', 'info');
+                return;
             }
 
-            mostrarStatus(`✅ Você votou em ${candidato.nome} (${candidato.partido}). Obrigado!`, 'success');
+            const btnLike = document.getElementById('likeBtn');
+            const btnDislike = document.getElementById('dislikeBtn');
+
+            if (tipo === 'like') {
+                likes++;
+                parsedVoto = 'like';
+                btnLike.classList.add('liked', 'pulse');
+                btnDislike.classList.add('voted');
+                setTimeout(() => btnLike.classList.remove('pulse'), 400);
+                mostrarStatus('🎉 Amém! Você apoia o 10! A professora vai ficar feliz! 💚', 'success');
+                criarConfetes();
+            } else {
+                dislikes++;
+                parsedVoto = 'dislike';
+                btnDislike.classList.add('disliked', 'pulse');
+                btnLike.classList.add('voted');
+                setTimeout(() => btnDislike.classList.remove('pulse'), 400);
+                mostrarStatus('📚 Hmm... tudo bem! Que tal reconsiderar e estudar mais? 😄', 'info');
+            }
+
+            jaVotou = true;
+            desabilitarBotoes();
+            salvarVotos();
+            atualizarUI();
         }
 
-        function desabilitarTodosCards() {
-            CANDIDATOS.forEach(c => {
-                const card = document.getElementById('card-' + c.id);
-                if (card) card.classList.add('voted');
-            });
+        function desabilitarBotoes() {
+            document.getElementById('likeBtn').disabled = true;
+            document.getElementById('dislikeBtn').disabled = true;
         }
 
-        function marcarCardSelecionado(id) {
-            const card = document.getElementById('card-' + id);
-            if (card) card.classList.add('selected');
-        }
+        function atualizarUI() {
+            document.getElementById('likeCount').textContent = likes;
+            document.getElementById('dislikeCount').textContent = dislikes;
 
-        function salvarVotosGlobais() {
-            const dados = {};
-            CANDIDATOS.forEach(c => { dados[c.id] = c.votos || 0; });
-            localStorage.setItem('votos_eleicao_2026_global', JSON.stringify(dados));
+            const total = likes + dislikes;
+            const pctLike = total > 0 ? Math.round((likes / total) * 100) : 50;
+            const pctDislike = total > 0 ? Math.round((dislikes / total) * 100) : 50;
+
+            document.getElementById('trackLike').style.width = pctLike + '%';
+            document.getElementById('trackDislike').style.width = pctDislike + '%';
+
+            document.getElementById('trackLike').textContent = total > 0 && pctLike > 10 ? pctLike + '%' : '';
+            document.getElementById('trackDislike').textContent = total > 0 && pctDislike > 10 ? pctDislike + '%' : '';
         }
 
         function mostrarStatus(msg, tipo) {
@@ -475,51 +875,96 @@
             el.className = 'status-msg show ' + tipo;
         }
 
-        // ===== PARTÍCULAS =====
+        // ===== CONFETES =====
+        function criarConfetes() {
+            const cores = ['#06b6d4', '#10b981', '#22d3ee', '#f59e0b', '#ef4444', '#8b5cf6'];
+            for (let i = 0; i < 40; i++) {
+                const conf = document.createElement('div');
+                conf.className = 'confetti';
+                conf.style.left = Math.random() * 100 + 'vw';
+                conf.style.top = '-20px';
+                conf.style.background = cores[Math.floor(Math.random() * cores.length)];
+                conf.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+                conf.style.width = conf.style.height = (Math.random() * 8 + 5) + 'px';
+                document.body.appendChild(conf);
+
+                const duration = Math.random() * 2000 + 2000;
+                const drift = (Math.random() - 0.5) * 300;
+
+                conf.animate([
+                    { transform: 'translate(0, 0) rotate(0deg)', opacity: 1 },
+                    { transform: `translate(${drift}px, ${window.innerHeight + 50}px) rotate(${Math.random() * 720}deg)`, opacity: 0 }
+                ], {
+                    duration: duration,
+                    easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+                }).onfinish = () => conf.remove();
+            }
+        }
+
+        // ===== COPIAR MENSAGEM =====
+        function copiarMensagem() {
+            const mensagem = `🧪 Olá, professora! Tudo bem? 🧪
+
+Preparei uma lista com 10 motivos para a senhora me dar um 10 em Química:
+
+1. 📚 Estudei TUDO que a senhora pediu
+2. 🧠 Meu cérebro virou uma tabela periódica
+3. ✏️ Fiz TODAS as listas de exercícios
+4. 🤝 Ajudei meus colegas a entenderem
+5. 😅 Nunca mais dormi na sua aula
+6. 🔥 Participei de TODAS as aulas
+7. 🧪 Amei cada experimento prático
+8. 📝 Tirei boas notas nas outras provas
+9. 💡 Entendi a matéria DE VERDADE
+10. ❤️ A senhora é minha professora favorita
+
+E o mais importante: eu realmente me esforcei e amo química por causa da senhora!
+
+Será que dá pra considerar um 10? 🙏💚
+
+Com carinho,
+Seu(sua) aluno(a) favorito(a) 🧪`;
+
+            navigator.clipboard.writeText(mensagem).then(() => {
+                mostrarStatus('✅ Mensagem copiada! Agora é só colar e enviar para a professora! 💚', 'success');
+            }).catch(() => {
+                mostrarStatus('❌ Não foi possível copiar. Tente selecionar manualmente.', 'info');
+            });
+        }
+
+        // ===== PARTÍCULAS (átomos) =====
         function criarParticulas() {
             const container = document.getElementById('bgParticles');
-            const cores = ['#3b82f6', '#8b5cf6', '#dc2626', '#22c55e', '#f59e0b'];
-            for (let i = 0; i < 35; i++) {
+            const cores = ['#06b6d4', '#10b981', '#22d3ee', '#8b5cf6', '#f59e0b'];
+            for (let i = 0; i < 40; i++) {
                 const dot = document.createElement('div');
                 dot.className = 'bg-dot';
                 dot.style.left = Math.random() * 100 + '%';
                 dot.style.animationDuration = (Math.random() * 15 + 10) + 's';
                 dot.style.animationDelay = (Math.random() * 15) + 's';
                 dot.style.background = cores[Math.floor(Math.random() * cores.length)];
-                dot.style.width = dot.style.height = (Math.random() * 3 + 1) + 'px';
+                dot.style.width = dot.style.height = (Math.random() * 4 + 1) + 'px';
+                dot.style.boxShadow = `0 0 8px ${dot.style.background}`;
                 container.appendChild(dot);
             }
         }
 
         // ===== INICIALIZAÇÃO =====
-        carregarVotosGlobais();
-        renderizarCandidatos();
-
-        // Verifica se já votou
-        const votoAnterior = localStorage.getItem('voto_eleicao_2026_usuario');
-        if (votoAnterior) {
-            jaVotou = true;
-            desabilitarTodosCards();
-            marcarCardSelecionado(votoAnterior);
-            const cand = CANDIDATOS.find(c => c.id === votoAnterior);
-            if (cand) {
-                mostrarStatus(`Você votou em ${cand.nome}. Obrigado!`, 'info');
-            }
-        }
-
-        atualizarUI();
+        renderizarMotivos();
+        carregarVotos2();
         criarParticulas();
 
         // Novas partículas
         setInterval(() => {
             const container = document.getElementById('bgParticles');
-            if (container.children.length > 45) return;
+            if (container.children.length > 50) return;
             const dot = document.createElement('div');
             dot.className = 'bg-dot';
             dot.style.left = Math.random() * 100 + '%';
             dot.style.animationDuration = (Math.random() * 15 + 10) + 's';
-            dot.style.background = ['#3b82f6', '#8b5cf6', '#dc2626'][Math.floor(Math.random() * 3)];
-            dot.style.width = dot.style.height = (Math.random() * 3 + 1) + 'px';
+            dot.style.background = ['#06b6d4', '#10b981', '#8b5cf6'][Math.floor(Math.random() * 3)];
+            dot.style.width = dot.style.height = (Math.random() * 4 + 1) + 'px';
+            dot.style.boxShadow = `0 0 8px ${dot.style.background}`;
             container.appendChild(dot);
             setTimeout(() => dot.remove(), 25000);
         }, 3000);
