@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Católico Apostólico Romano | Like & Dislike</title>
+    <title>⚖️ Política Brasil | Lula vs Bolsonaro</title>
     <style>
         * {
             margin: 0;
@@ -12,295 +12,433 @@
         }
 
         body {
-            font-family: 'Georgia', 'Times New Roman', serif;
-            background: linear-gradient(135deg, #fdf6e3 0%, #f5e6c8 50%, #e8d5a8 100%);
+            font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+            background: linear-gradient(135deg, #0a0f1a 0%, #111827 50%, #0d1420 100%);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             padding: 20px;
-            color: #3a2a1a;
+            color: #e5e7eb;
+            overflow-x: hidden;
         }
 
-        /* Cruz decorativa no topo */
-        .cross-top {
-            width: 40px;
-            height: 60px;
-            position: relative;
-            margin-bottom: 15px;
+        /* Fundo de partículas sutis */
+        .bg-particles {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
         }
 
-        .cross-top::before {
-            content: '';
+        .bg-dot {
             position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 8px;
-            height: 100%;
-            background: #8b6914;
-            border-radius: 2px;
+            width: 2px;
+            height: 2px;
+            border-radius: 50%;
+            background: #3b82f6;
+            opacity: 0.15;
+            animation: floatDot linear infinite;
         }
 
-        .cross-top::after {
-            content: '';
-            position: absolute;
-            top: 18px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 30px;
-            height: 8px;
-            background: #8b6914;
-            border-radius: 2px;
+        @keyframes floatDot {
+            0% { transform: translateY(100vh); opacity: 0; }
+            10% { opacity: 0.2; }
+            90% { opacity: 0.2; }
+            100% { transform: translateY(-50px); opacity: 0; }
         }
 
+        /* Header */
         header {
             text-align: center;
             margin-bottom: 30px;
-            padding: 25px 40px;
-            background: linear-gradient(145deg, #fffdf5, #f5e6c8);
-            border: 2px solid #c9a84c;
-            border-radius: 15px;
-            box-shadow: 0 8px 25px rgba(139, 105, 20, 0.2);
-            position: relative;
-            max-width: 700px;
+            padding: 30px 40px;
+            background: linear-gradient(145deg, rgba(15, 23, 42, 0.95), rgba(17, 24, 39, 0.98));
+            border: 1px solid #1e3a5f;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), inset 0 0 30px rgba(59, 130, 246, 0.05);
+            max-width: 800px;
             width: 100%;
-        }
-
-        header::before {
-            content: '✝';
-            position: absolute;
-            top: -18px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 30px;
-            color: #c9a84c;
-            background: #fdf6e3;
-            padding: 0 10px;
+            z-index: 2;
+            position: relative;
         }
 
         h1 {
-            font-size: 2.2rem;
-            color: #5c3d1e;
+            font-size: 2rem;
+            color: #f9fafb;
             letter-spacing: 2px;
+            margin-bottom: 10px;
             text-transform: uppercase;
-            margin-bottom: 8px;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
 
         .subtitle {
-            font-size: 1.1rem;
-            color: #8b6914;
-            font-style: italic;
+            font-size: 1rem;
+            color: #9ca3af;
             letter-spacing: 1px;
         }
 
         .divider {
             width: 200px;
             height: 2px;
-            background: linear-gradient(to right, transparent, #c9a84c, transparent);
+            background: linear-gradient(to right, transparent, #3b82f6, #8b5cf6, transparent);
             margin: 15px auto;
         }
 
         /* Card principal */
-        .card {
-            background: linear-gradient(145deg, #fffdf5, #faf3e0);
-            border: 2px solid #d4b96a;
+        .main-card {
+            background: linear-gradient(145deg, rgba(15, 23, 42, 0.95), rgba(17, 24, 39, 0.98));
+            border: 1px solid #1e3a5f;
             border-radius: 20px;
             padding: 35px;
-            max-width: 600px;
+            max-width: 800px;
             width: 100%;
-            box-shadow: 0 12px 35px rgba(139, 105, 20, 0.25);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.6);
             position: relative;
             margin-bottom: 30px;
+            z-index: 2;
         }
 
-        .card::after {
-            content: '';
-            position: absolute;
-            inset: 6px;
-            border: 1px solid rgba(201, 168, 76, 0.3);
-            border-radius: 14px;
-            pointer-events: none;
-        }
-
-        .verse {
-            text-align: center;
-            font-style: italic;
-            color: #6b4f2e;
-            font-size: 1rem;
-            margin-bottom: 25px;
-            padding: 15px;
-            border-left: 3px solid #c9a84c;
-            border-right: 3px solid #c9a84c;
-            background: rgba(201, 168, 76, 0.05);
-            border-radius: 5px;
-        }
-
-        .verse cite {
-            display: block;
-            margin-top: 8px;
-            font-size: 0.85rem;
-            color: #8b6914;
-            font-style: normal;
-            font-weight: bold;
-        }
-
-        .question {
-            text-align: center;
-            font-size: 1.3rem;
-            color: #5c3d1e;
-            margin-bottom: 30px;
-            font-weight: bold;
-        }
-
-        /* Botões de Like/Dislike */
-        .vote-buttons {
+        /* Comparação de candidatos */
+        .vs-container {
             display: flex;
             justify-content: center;
-            gap: 30px;
+            align-items: center;
+            gap: 20px;
             margin-bottom: 30px;
             flex-wrap: wrap;
         }
 
-        .vote-btn {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
-            padding: 20px 35px;
-            border: 2px solid #c9a84c;
+        .candidate {
+            flex: 1;
+            min-width: 200px;
+            max-width: 280px;
+            text-align: center;
+            padding: 25px 20px;
             border-radius: 15px;
-            background: linear-gradient(145deg, #fffdf5, #f5e6c8);
-            cursor: pointer;
             transition: all 0.3s ease;
-            font-family: 'Georgia', serif;
-            font-size: 1rem;
-            color: #5c3d1e;
+            position: relative;
+        }
+
+        .candidate.lula {
+            background: linear-gradient(145deg, rgba(220, 38, 38, 0.1), rgba(185, 28, 28, 0.05));
+            border: 2px solid rgba(220, 38, 38, 0.4);
+        }
+
+        .candidate.bolsonaro {
+            background: linear-gradient(145deg, rgba(37, 99, 235, 0.1), rgba(29, 78, 216, 0.05));
+            border: 2px solid rgba(37, 99, 235, 0.4);
+        }
+
+        .candidate:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .candidate-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
             font-weight: bold;
-            min-width: 130px;
+            color: white;
+            position: relative;
+        }
+
+        .candidate.lula .candidate-avatar {
+            background: linear-gradient(145deg, #dc2626, #991b1b);
+            box-shadow: 0 0 30px rgba(220, 38, 38, 0.4);
+        }
+
+        .candidate.bolsonaro .candidate-avatar {
+            background: linear-gradient(145deg, #2563eb, #1e40af);
+            box-shadow: 0 0 30px rgba(37, 99, 235, 0.4);
+        }
+
+        .candidate h2 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: #f9fafb;
+        }
+
+        .candidate .party {
+            font-size: 0.85rem;
+            color: #9ca3af;
+            margin-bottom: 15px;
+        }
+
+        .candidate .role {
+            font-size: 0.8rem;
+            color: #6b7280;
+            font-style: italic;
+        }
+
+        .vs-badge {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #f59e0b;
+            text-shadow: 0 0 20px rgba(245, 158, 11, 0.5);
+            padding: 10px;
+        }
+
+        /* Notícias */
+        .news-section {
+            margin-bottom: 30px;
+        }
+
+        .news-section h3 {
+            font-size: 1.1rem;
+            color: #f9fafb;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #1e3a5f;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .news-item {
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid #1e3a5f;
+            border-radius: 12px;
+            padding: 18px;
+            transition: all 0.3s ease;
+        }
+
+        .news-item:hover {
+            border-color: #3b82f6;
+            background: rgba(30, 41, 59, 0.8);
+        }
+
+        .news-item .tag {
+            display: inline-block;
+            font-size: 0.7rem;
+            padding: 3px 8px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .tag.lula-tag {
+            background: rgba(220, 38, 38, 0.2);
+            color: #fca5a5;
+            border: 1px solid rgba(220, 38, 38, 0.3);
+        }
+
+        .tag.bolsonaro-tag {
+            background: rgba(37, 99, 235, 0.2);
+            color: #93c5fd;
+            border: 1px solid rgba(37, 99, 235, 0.3);
+        }
+
+        .tag.neutral {
+            background: rgba(107, 114, 128, 0.2);
+            color: #d1d5db;
+            border: 1px solid rgba(107, 114, 128, 0.3);
+        }
+
+        .news-item .news-text {
+            font-size: 0.9rem;
+            color: #d1d5db;
+            line-height: 1.5;
+        }
+
+        .news-item .news-date {
+            font-size: 0.75rem;
+            color: #6b7280;
+            margin-top: 10px;
+        }
+
+        /* Pergunta */
+        .question-box {
+            text-align: center;
+            padding: 25px;
+            background: linear-gradient(145deg, rgba(30, 41, 59, 0.6), rgba(15, 23, 42, 0.8));
+            border: 1px solid #1e3a5f;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+
+        .question-box p {
+            font-size: 1.2rem;
+            color: #f9fafb;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .question-box small {
+            color: #9ca3af;
+            font-size: 0.85rem;
+        }
+
+        /* Botões de Voto */
+        .vote-section {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .vote-card {
+            flex: 1;
+            min-width: 200px;
+            max-width: 280px;
+            padding: 25px 20px;
+            border-radius: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
             overflow: hidden;
+            border: 2px solid transparent;
         }
 
-        .vote-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-            transition: left 0.5s;
+        .vote-card.vote-lula {
+            background: linear-gradient(145deg, rgba(220, 38, 38, 0.15), rgba(185, 28, 28, 0.08));
+            border-color: rgba(220, 38, 38, 0.5);
         }
 
-        .vote-btn:hover::before {
-            left: 100%;
+        .vote-card.vote-lula:hover {
+            background: linear-gradient(145deg, rgba(220, 38, 38, 0.25), rgba(185, 28, 28, 0.15));
+            box-shadow: 0 0 40px rgba(220, 38, 38, 0.3);
+            transform: translateY(-5px) scale(1.02);
         }
 
-        .vote-btn:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 25px rgba(139, 105, 20, 0.3);
-            border-color: #8b6914;
+        .vote-card.vote-bolsonaro {
+            background: linear-gradient(145deg, rgba(37, 99, 235, 0.15), rgba(29, 78, 216, 0.08));
+            border-color: rgba(37, 99, 235, 0.5);
         }
 
-        .vote-btn:active {
-            transform: translateY(-1px);
+        .vote-card.vote-bolsonaro:hover {
+            background: linear-gradient(145deg, rgba(37, 99, 235, 0.25), rgba(29, 78, 216, 0.15));
+            box-shadow: 0 0 40px rgba(37, 99, 235, 0.3);
+            transform: translateY(-5px) scale(1.02);
         }
 
-        .vote-btn.liked {
-            background: linear-gradient(145deg, #d4edda, #a8d5b5);
-            border-color: #28a745;
-            color: #155724;
-        }
-
-        .vote-btn.disliked {
-            background: linear-gradient(145deg, #f8d7da, #f1b0b7);
-            border-color: #dc3545;
-            color: #721c24;
-        }
-
-        .vote-btn.voted {
+        .vote-card.voted {
             cursor: default;
+            pointer-events: none;
+            opacity: 0.9;
         }
 
-        .vote-btn .icon {
-            font-size: 2rem;
+        .vote-card .emoji-icon {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            display: block;
         }
 
-        .vote-btn .label {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .count {
-            font-size: 1.1rem;
-            color: #8b6914;
+        .vote-card .vote-label {
+            font-size: 1rem;
             font-weight: bold;
+            color: #f9fafb;
+            margin-bottom: 5px;
         }
 
-        /* Barra de progresso */
-        .progress-container {
-            margin-top: 25px;
+        .vote-card .vote-name {
+            font-size: 0.85rem;
+            color: #9ca3af;
+            margin-bottom: 15px;
         }
 
-        .progress-label {
+        .vote-card .vote-count {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #f9fafb;
+        }
+
+        .vote-card .vote-percent {
+            font-size: 0.85rem;
+            color: #6b7280;
+            margin-top: 5px;
+        }
+
+        /* Barra de progresso comparativa */
+        .comparison-bar {
+            margin-bottom: 25px;
+        }
+
+        .comparison-label {
             display: flex;
             justify-content: space-between;
             font-size: 0.85rem;
-            color: #6b4f2e;
+            color: #9ca3af;
             margin-bottom: 8px;
-            font-weight: bold;
         }
 
-        .progress-bar {
-            height: 20px;
-            background: #f1b0b7;
-            border-radius: 10px;
+        .comparison-track {
+            height: 28px;
+            background: #1f2937;
+            border-radius: 14px;
             overflow: hidden;
-            border: 1px solid #d4b96a;
+            display: flex;
+            border: 1px solid #374151;
         }
 
-        .progress-fill {
+        .track-lula {
+            background: linear-gradient(90deg, #991b1b, #dc2626, #ef4444);
             height: 100%;
-            background: linear-gradient(90deg, #28a745, #5cb85c);
-            width: 50%;
-            transition: width 0.6s ease;
-            border-radius: 10px 0 0 10px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 0.7rem;
+            font-size: 0.75rem;
             font-weight: bold;
-            min-width: 30px;
+            transition: width 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            min-width: 0;
+            overflow: hidden;
         }
 
-        /* Mensagem de status */
-        .status-message {
-            text-align: center;
-            margin-top: 20px;
-            padding: 12px;
-            border-radius: 10px;
+        .track-bolsonaro {
+            background: linear-gradient(90deg, #1e40af, #2563eb, #3b82f6);
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.75rem;
             font-weight: bold;
+            transition: width 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            min-width: 0;
+            overflow: hidden;
+        }
+
+        /* Status */
+        .status-msg {
+            text-align: center;
+            padding: 15px;
+            border-radius: 10px;
+            font-weight: 600;
             display: none;
             animation: fadeIn 0.5s ease;
+            font-size: 0.95rem;
         }
 
-        .status-message.show {
+        .status-msg.show {
             display: block;
         }
 
-        .status-message.success {
-            background: rgba(40, 167, 69, 0.15);
-            color: #155724;
-            border: 1px solid #28a745;
+        .status-msg.success {
+            background: rgba(34, 197, 94, 0.15);
+            color: #4ade80;
+            border: 1px solid rgba(34, 197, 94, 0.3);
         }
 
-        .status-message.info {
-            background: rgba(201, 168, 76, 0.15);
-            color: #6b4f2e;
-            border: 1px solid #c9a84c;
+        .status-msg.info {
+            background: rgba(59, 130, 246, 0.15);
+            color: #93c5fd;
+            border: 1px solid rgba(59, 130, 246, 0.3);
         }
 
         @keyframes fadeIn {
@@ -308,38 +446,40 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Rodapé */
+        /* Footer */
         footer {
             text-align: center;
-            color: #8b6914;
-            font-size: 0.85rem;
+            color: #6b7280;
+            font-size: 0.8rem;
             padding: 20px;
-            max-width: 600px;
-            line-height: 1.6;
+            max-width: 800px;
+            line-height: 1.8;
+            z-index: 2;
         }
 
-        footer .cross {
+        footer .flag {
             font-size: 1.5rem;
             display: block;
-            margin-bottom: 5px;
-            color: #c9a84c;
+            margin-bottom: 8px;
         }
 
         /* Responsivo */
-        @media (max-width: 500px) {
-            h1 { font-size: 1.5rem; }
-            .subtitle { font-size: 0.9rem; }
+        @media (max-width: 600px) {
+            h1 { font-size: 1.4rem; }
+            .subtitle { font-size: 0.85rem; }
             header { padding: 20px 15px; }
-            .card { padding: 20px; }
-            .vote-buttons { gap: 15px; }
-            .vote-btn { padding: 15px 25px; min-width: 110px; }
-            .vote-btn .icon { font-size: 1.5rem; }
+            .main-card { padding: 20px; }
+            .vote-section { flex-direction: column; align-items: center; }
+            .vote-card { width: 100%; max-width: 300px; }
+            .vs-container { flex-direction: column; }
+            .vs-badge { font-size: 1.2rem; }
+            .candidate { max-width: 100%; }
         }
 
-        /* Animação do like */
+        /* Efeito de pulso */
         @keyframes pulse {
             0% { transform: scale(1); }
-            50% { transform: scale(1.2); }
+            50% { transform: scale(1.05); }
             100% { transform: scale(1); }
         }
 
@@ -350,162 +490,237 @@
 </head>
 <body>
 
-    <div class="cross-top"></div>
+    <div class="bg-particles" id="bgParticles"></div>
 
     <header>
-        <h1>✝ Católico Apostólico Romano ✝</h1>
+        <h1>⚖️ Política Brasil 2026</h1>
         <div class="divider"></div>
-        <p class="subtitle">Fé, Tradição e Comunhão com Roma</p>
+        <p class="subtitle">Compare. Informe-se. Escolha.</p>
     </header>
 
-    <main class="card">
-        <div class="verse">
-            "Tu és Pedro, e sobre esta pedra edificarei a minha Igreja."
-            <cite>— Mateus 16, 18</cite>
-        </div>
+    <main class="main-card">
 
-        <p class="question">Você aprova esta página?</p>
-
-        <div class="vote-buttons">
-            <button class="vote-btn" id="likeBtn" onclick="votar('like')">
-                <span class="icon">✝</span>
-                <span class="label">Amém!</span>
-                <span class="count" id="likeCount">0</span>
-            </button>
-
-            <button class="vote-btn" id="dislikeBtn" onclick="votar('dislike')">
-                <span class="icon">✞</span>
-                <span class="label">Não</span>
-                <span class="count" id="dislikeCount">0</span>
-            </button>
-        </div>
-
-        <div class="progress-container">
-            <div class="progress-label">
-                <span>✝ Aprovação</span>
-                <span id="percentText">0%</span>
+        <!-- Comparação de Candidatos -->
+        <div class="vs-container">
+            <div class="candidate lula">
+                <div class="candidate-avatar">L</div>
+                <h2>Lula</h2>
+                <div class="party">PT - Partido dos Trabalhadores</div>
+                <div class="role">Presidente da República</div>
             </div>
-            <div class="progress-bar">
-                <div class="progress-fill" id="progressFill" style="width: 0%;">
-                    <span id="fillText"></span>
+            <div class="vs-badge">VS</div>
+            <div class="candidate bolsonaro">
+                <div class="candidate-avatar">B</div>
+                <h2>Flávio Bolsonaro</h2>
+                <div class="party">PL - Partido Liberal</div>
+                <div class="role">Senador / Candidato</div>
+            </div>
+        </div>
+
+        <!-- Notícias -->
+        <div class="news-section">
+            <h3>📰 Últimas Notícias</h3>
+            <div class="news-grid">
+                <div class="news-item">
+                    <span class="tag lula-tag">Lula</span>
+                    <p class="news-text">Datafolha: 49% desaprovam e 48% aprovam a gestão do presidente Lula no governo federal.</p>
+                    <p class="news-date">Datafolha • Set/2026</p>
+                </div>
+                <div class="news-item">
+                    <span class="tag neutral">Eleições</span>
+                    <p class="news-text">Disputa presidencial segue em aberto com Lula e Flávio Bolsonaro separados por margem de erro.</p>
+                    <p class="news-date">Atlas/Bloomberg • Out/2026</p>
+                </div>
+                <div class="news-item">
+                    <span class="tag bolsonaro-tag">Bolsonaro</span>
+                    <p class="news-text">Jair Bolsonaro não poderá votar nas eleições 2026. Ex-presidente está com direitos políticos suspensos por condenação no STF.</p>
+                    <p class="news-date">Poder360 • Set/2026</p>
+                </div>
+                <div class="news-item">
+                    <span class="tag neutral">Democracia</span>
+                    <p class="news-text">Datafolha: 73% dos brasileiros dizem que a democracia é sempre melhor do que qualquer outra forma de governo.</p>
+                    <p class="news-date">G1 • Out/2026</p>
+                </div>
+                <div class="news-item">
+                    <span class="tag lula-tag">Lula</span>
+                    <p class="news-text">Quaest: Governo Lula tem 49% de desaprovação e 44% de aprovação na véspera do primeiro turno.</p>
+                    <p class="news-date">Quaest • Out/2026</p>
+                </div>
+                <div class="news-item">
+                    <span class="tag neutral">Pesquisa</span>
+                    <p class="news-text">PoderData/Aya aponta empate técnico no segundo turno: 46% para cada candidato.</p>
+                    <p class="news-date">PoderData • Out/2026</p>
                 </div>
             </div>
         </div>
 
-        <div class="status-message" id="statusMsg"></div>
+        <!-- Pergunta -->
+        <div class="question-box">
+            <p>✋ Qual é a sua opinião?</p>
+            <small>Não há resposta certa ou errada. Escolha com base nas informações.</small>
+        </div>
+
+        <!-- Botões de Voto -->
+        <div class="vote-section">
+            <div class="vote-card vote-lula" id="voteLula" onclick="votar('lula')">
+                <span class="emoji-icon">🔴</span>
+                <div class="vote-label">Melhor para o Brasil</div>
+                <div class="vote-name">Lula</div>
+                <div class="vote-count" id="countLula">0</div>
+                <div class="vote-percent" id="percentLula">0%</div>
+            </div>
+
+            <div class="vote-card vote-bolsonaro" id="voteBolsonaro" onclick="votar('bolsonaro')">
+                <span class="emoji-icon">🔵</span>
+                <div class="vote-label">Melhor para o Brasil</div>
+                <div class="vote-name">Flávio Bolsonaro</div>
+                <div class="vote-count" id="countBolsonaro">0</div>
+                <div class="vote-percent" id="percentBolsonaro">0%</div>
+            </div>
+        </div>
+
+        <!-- Barra Comparativa -->
+        <div class="comparison-bar">
+            <div class="comparison-label">
+                <span>🔴 Lula</span>
+                <span>🔵 Flávio Bolsonaro</span>
+            </div>
+            <div class="comparison-track">
+                <div class="track-lula" id="trackLula" style="width: 50%;"></div>
+                <div class="track-bolsonaro" id="trackBolsonaro" style="width: 50%;"></div>
+            </div>
+        </div>
+
+        <div class="status-msg" id="statusMsg"></div>
+
     </main>
 
     <footer>
-        <span class="cross">✝</span>
-        Ad Maiorem Dei Gloriam — Para a Maior Glória de Deus<br>
-        <em>"Onde estiver o Bispo, aí está a Igreja Católica."</em> — Santo Inácio de Antioquia
+        <span class="flag">🇧🇷</span>
+        <strong>Política Brasil 2026</strong><br>
+        Informação imparcial. A escolha é sua.<br>
+        <em>Este site não endossa nenhum candidato. Consulte sempre fontes oficiais.</em>
     </footer>
 
     <script>
-        // Estado da aplicação
-        let likes = 0;
-        let dislikes = 0;
-        let userVoted = null;
-
-        // Carregar votos do localStorage
-        function carregarVotos() {
-            const dados = localStorage.getItem('votos_catolico');
-            if (dados) {
-                const parsed = JSON.parse(dados);
-                likes = parsed.likes || 0;
-                dislikes = parsed.dislikes || 0;
-                userVoted = parsed.userVoted || null;
-            }
-            atualizarUI();
-            if (userVoted) {
-                desabilitarBotoes();
-                mostrarStatus(userVoted === 'like' 
-                    ? 'Você já aprovou esta página. Amém! ✝' 
-                    : 'Você já votou "Não". Que Deus te abençoe! ✝', 
-                    userVoted === 'like' ? 'success' : 'info');
+        // ===== PARTÍCULAS DE FUNDO =====
+        function criarParticulas() {
+            const container = document.getElementById('bgParticles');
+            const cores = ['#3b82f6', '#8b5cf6', '#dc2626', '#2563eb', '#6b7280'];
+            
+            for (let i = 0; i < 40; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'bg-dot';
+                dot.style.left = Math.random() * 100 + '%';
+                dot.style.animationDuration = (Math.random() * 15 + 10) + 's';
+                dot.style.animationDelay = (Math.random() * 15) + 's';
+                dot.style.background = cores[Math.floor(Math.random() * cores.length)];
+                dot.style.width = dot.style.height = (Math.random() * 3 + 1) + 'px';
+                container.appendChild(dot);
             }
         }
 
-        // Salvar votos no localStorage
+        // ===== LÓGICA DE VOTAÇÃO =====
+        let votosLula = 0;
+        let votosBolsonaro = 0;
+        let jaVotou = false;
+
+        function carregarVotos() {
+            const dados = localStorage.getItem('votos_politica_2026');
+            if (dados) {
+                try {
+                    const parsed = JSON.parse(dados);
+                    votosLula = parsed.votosLula || 0;
+                    votosBolsonaro = parsed.votosBolsonaro || 0;
+                    jaVotou = parsed.jaVotou || false;
+                } catch (e) { /* ignore */ }
+            }
+            atualizarUI();
+            if (jaVotou) {
+                desabilitarCartoes();
+            }
+        }
+
         function salvarVotos() {
-            localStorage.setItem('votos_catolico', JSON.stringify({
-                likes,
-                dislikes,
-                userVoted
+            localStorage.setItem('votos_politica_2026', JSON.stringify({
+                votosLula,
+                votosBolsonaro,
+                jaVotou
             }));
         }
 
-        // Função de votar
-        function votar(tipo) {
-            if (userVoted) {
-                mostrarStatus('Você já votou. Obrigado pela participação! ✝', 'info');
+        function votar(escolha) {
+            if (jaVotou) {
+                mostrarStatus('Você já votou. Obrigado pela participação!', 'info');
                 return;
             }
 
-            if (tipo === 'like') {
-                likes++;
-                userVoted = 'like';
-                document.getElementById('likeBtn').classList.add('liked', 'voted', 'pulse');
-                document.getElementById('dislikeBtn').classList.add('voted');
-                setTimeout(() => document.getElementById('likeBtn').classList.remove('pulse'), 400);
-                mostrarStatus('Amém! Sua aprovação foi registrada. Deus te abençoe! ✝', 'success');
+            if (escolha === 'lula') {
+                votosLula++;
+                document.getElementById('voteLula').classList.add('pulse');
+                setTimeout(() => document.getElementById('voteLula').classList.remove('pulse'), 400);
+                mostrarStatus('🔴 Você escolheu Lula. Seu voto foi registrado!', 'success');
             } else {
-                dislikes++;
-                userVoted = 'dislike';
-                document.getElementById('dislikeBtn').classList.add('disliked', 'voted', 'pulse');
-                document.getElementById('likeBtn').classList.add('voted');
-                setTimeout(() => document.getElementById('dislikeBtn').classList.remove('pulse'), 400);
-                mostrarStatus('Seu voto foi registrado. Que a paz de Cristo esteja com você! ✝', 'info');
+                votosBolsonaro++;
+                document.getElementById('voteBolsonaro').classList.add('pulse');
+                setTimeout(() => document.getElementById('voteBolsonaro').classList.remove('pulse'), 400);
+                mostrarStatus('🔵 Você escolheu Flávio Bolsonaro. Seu voto foi registrado!', 'success');
             }
 
-            desabilitarBotoes();
+            jaVotou = true;
+            desabilitarCartoes();
             salvarVotos();
             atualizarUI();
         }
 
-        // Desabilitar botões após votar
-        function desabilitarBotoes() {
-            document.getElementById('likeBtn').disabled = true;
-            document.getElementById('dislikeBtn').disabled = true;
-            document.getElementById('likeBtn').style.cursor = 'default';
-            document.getElementById('dislikeBtn').style.cursor = 'default';
+        function desabilitarCartoes() {
+            document.getElementById('voteLula').classList.add('voted');
+            document.getElementById('voteBolsonaro').classList.add('voted');
         }
 
-        // Atualizar interface
         function atualizarUI() {
-            document.getElementById('likeCount').textContent = likes;
-            document.getElementById('dislikeCount').textContent = dislikes;
+            const total = votosLula + votosBolsonaro;
 
-            const total = likes + dislikes;
-            const percent = total > 0 ? Math.round((likes / total) * 100) : 0;
+            document.getElementById('countLula').textContent = votosLula;
+            document.getElementById('countBolsonaro').textContent = votosBolsonaro;
 
-            document.getElementById('percentText').textContent = percent + '%';
-            document.getElementById('progressFill').style.width = percent + '%';
-            
-            const fillText = document.getElementById('fillText');
-            if (percent > 15) {
-                fillText.textContent = percent + '%';
-            } else {
-                fillText.textContent = '';
-            }
+            const percentLula = total > 0 ? Math.round((votosLula / total) * 100) : 50;
+            const percentBolsonaro = total > 0 ? Math.round((votosBolsonaro / total) * 100) : 50;
 
-            // Atualizar classes visuais
-            if (userVoted === 'like') {
-                document.getElementById('likeBtn').classList.add('liked');
-            } else if (userVoted === 'dislike') {
-                document.getElementById('dislikeBtn').classList.add('disliked');
-            }
+            document.getElementById('percentLula').textContent = total > 0 ? percentLula + '%' : '---';
+            document.getElementById('percentBolsonaro').textContent = total > 0 ? percentBolsonaro + '%' : '---';
+
+            document.getElementById('trackLula').style.width = (total > 0 ? percentLula : 50) + '%';
+            document.getElementById('trackBolsonaro').style.width = (total > 0 ? percentBolsonaro : 50) + '%';
+
+            // Texto dentro das barras
+            document.getElementById('trackLula').textContent = total > 0 && percentLula > 10 ? percentLula + '%' : '';
+            document.getElementById('trackBolsonaro').textContent = total > 0 && percentBolsonaro > 10 ? percentBolsonaro + '%' : '';
         }
 
-        // Mostrar mensagem de status
         function mostrarStatus(msg, tipo) {
             const el = document.getElementById('statusMsg');
             el.textContent = msg;
-            el.className = 'status-message show ' + tipo;
+            el.className = 'status-msg show ' + tipo;
         }
 
-        // Inicializar
+        // ===== INICIALIZAÇÃO =====
+        criarParticulas();
         carregarVotos();
+
+        // Novas partículas a cada 3s
+        setInterval(() => {
+            const container = document.getElementById('bgParticles');
+            if (container.children.length > 50) return;
+            const dot = document.createElement('div');
+            dot.className = 'bg-dot';
+            dot.style.left = Math.random() * 100 + '%';
+            dot.style.animationDuration = (Math.random() * 15 + 10) + 's';
+            dot.style.background = ['#3b82f6', '#8b5cf6', '#dc2626'][Math.floor(Math.random() * 3)];
+            dot.style.width = dot.style.height = (Math.random() * 3 + 1) + 'px';
+            container.appendChild(dot);
+            setTimeout(() => dot.remove(), 25000);
+        }, 3000);
     </script>
 
 </body>
